@@ -1,0 +1,29 @@
+function convertToRoman(num) {
+ let res = '', m = '';;
+ let ones = [0,'I','II','III','IV','V','VI','VII','VIII','IX'];
+ let tens = [0,'X','XX','XXX','XL','L','LX','LXX','LXXX','XC'];
+ let hundreds = [0,'C','CC','CCC','CD','D','DC','DCC','DCCC','CM'];
+ num = num.toString().split('');
+ for (let i = num.length; i >= 0; i--) {
+   if (Number(num[i]) != 0) {
+   if (i === num.length-1) {
+     res = ones[Number(num[i])] + res;
+   }
+   if (i === num.length-2) {
+     res = tens[Number(num[i])] + res;
+   }
+   if (i === num.length-3) {
+     res = hundreds[Number(num[i])] + res;
+   }
+   if (i === num.length-4) {
+     for (let j = 0; j < Number(num[num.length-4]); j++) {
+       m += 'M';
+     }
+   }
+   res = m + res;
+   }
+ }
+ return res;
+}
+
+convertToRoman(3999);
